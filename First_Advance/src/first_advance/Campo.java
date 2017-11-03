@@ -43,6 +43,11 @@ public class Campo {
         this.size = size;
         this.contenido = contenido;
     }
+
+    @Override
+    public String toString() {
+        return  "nombre: " + name + " El tamaño es :" + size + ", contenido :" + contenido + '}';
+    }
     
    
     
