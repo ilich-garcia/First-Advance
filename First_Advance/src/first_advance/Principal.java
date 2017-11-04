@@ -17,21 +17,39 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jf_file = new javax.swing.JFrame();
-        jPanel3 = new javax.swing.JPanel();
+        jp_file = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jf_field = new javax.swing.JFrame();
-        jPanel4 = new javax.swing.JPanel();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel6 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        tf_fieldname = new javax.swing.JTextField();
+        tf_fieldcontent = new javax.swing.JTextField();
+        jb_addfield = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jt_fields = new javax.swing.JTable();
+        jb_deletefield = new javax.swing.JButton();
+        jb_modifyfield = new javax.swing.JButton();
         jf_record = new javax.swing.JFrame();
-        jPanel5 = new javax.swing.JPanel();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jp_add = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        cb_fields = new javax.swing.JComboBox<>();
+        jb_addrecord = new javax.swing.JButton();
+        jp_modify = new javax.swing.JPanel();
+        jp_find = new javax.swing.JPanel();
+        jp_list = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jt_records = new javax.swing.JTable();
+        jb_deleterecord = new javax.swing.JButton();
         jf_index = new javax.swing.JFrame();
-        jf_standarization = new javax.swing.JFrame();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jp_createindex = new javax.swing.JPanel();
+        jp_reindexfiles = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -41,20 +59,9 @@ public class Principal extends javax.swing.JFrame {
         mi_savefile = new javax.swing.JMenuItem();
         mi_closefile = new javax.swing.JMenuItem();
         mi_logout = new javax.swing.JMenuItem();
-        jm_field = new javax.swing.JMenu();
-        mi_newfield = new javax.swing.JMenuItem();
-        mi_listfield = new javax.swing.JMenuItem();
-        mi_modifyfield = new javax.swing.JMenuItem();
-        mi_deletefield = new javax.swing.JMenuItem();
-        jm_record = new javax.swing.JMenu();
-        mi_newrecord = new javax.swing.JMenuItem();
-        mi_modifyrecord = new javax.swing.JMenuItem();
-        mi_searchrecord = new javax.swing.JMenuItem();
-        mi_deleterecord = new javax.swing.JMenuItem();
-        mi_listrecord = new javax.swing.JMenuItem();
-        jm_index = new javax.swing.JMenu();
-        mi_newindex = new javax.swing.JMenuItem();
-        mi_reindex = new javax.swing.JMenuItem();
+        mi_fields = new javax.swing.JMenuItem();
+        mi_records = new javax.swing.JMenuItem();
+        mi_index = new javax.swing.JMenuItem();
         jm_standarization = new javax.swing.JMenu();
         mi_exportexcel = new javax.swing.JMenuItem();
         mi_exportxml = new javax.swing.JMenuItem();
@@ -65,18 +72,18 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Archivo");
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        javax.swing.GroupLayout jp_fileLayout = new javax.swing.GroupLayout(jp_file);
+        jp_file.setLayout(jp_fileLayout);
+        jp_fileLayout.setHorizontalGroup(
+            jp_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fileLayout.createSequentialGroup()
                 .addGap(153, 153, 153)
                 .addComponent(jLabel1)
                 .addContainerGap(157, Short.MAX_VALUE))
         );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
+        jp_fileLayout.setVerticalGroup(
+            jp_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_fileLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
                 .addContainerGap(252, Short.MAX_VALUE))
@@ -86,11 +93,11 @@ public class Principal extends javax.swing.JFrame {
         jf_file.getContentPane().setLayout(jf_fileLayout);
         jf_fileLayout.setHorizontalGroup(
             jf_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jp_file, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jf_fileLayout.setVerticalGroup(
             jf_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jp_file, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -100,111 +107,262 @@ public class Principal extends javax.swing.JFrame {
 
         jLabel4.setText("Contenido");
 
-        jButton1.setText("jButton1");
+        jb_addfield.setText("Agregar");
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(jLabel2))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel3))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 194, Short.MAX_VALUE)
-                            .addComponent(jTextField1)))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jButton1)))
-                .addContainerGap(83, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jLabel2)
-                .addGap(23, 23, 23)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(42, 42, 42)
-                .addComponent(jButton1)
-                .addContainerGap(71, Short.MAX_VALUE))
+                    .addComponent(jLabel4))
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(tf_fieldcontent, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_fieldname, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(77, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(161, 161, 161))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jb_addfield)
+                .addGap(166, 166, 166))
         );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(52, 52, 52)
+                .addComponent(jLabel2)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(tf_fieldname, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(tf_fieldcontent, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(50, 50, 50)
+                .addComponent(jb_addfield)
+                .addContainerGap(74, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Crear", jPanel6);
+
+        jt_fields.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jt_fields);
+
+        jb_deletefield.setText("Eliminar");
+
+        jb_modifyfield.setText("Modificar");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(99, 99, 99)
+                .addComponent(jb_deletefield)
+                .addGap(75, 75, 75)
+                .addComponent(jb_modifyfield)
+                .addContainerGap(102, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(14, 14, 14)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_deletefield)
+                    .addComponent(jb_modifyfield))
+                .addGap(0, 34, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Listar", jPanel7);
 
         javax.swing.GroupLayout jf_fieldLayout = new javax.swing.GroupLayout(jf_field.getContentPane());
         jf_field.getContentPane().setLayout(jf_fieldLayout);
         jf_fieldLayout.setHorizontalGroup(
             jf_fieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         jf_fieldLayout.setVerticalGroup(
             jf_fieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel5.setText("Registro");
+        jLabel5.setText("Agregar");
 
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(jLabel5)
-                .addContainerGap(156, Short.MAX_VALUE))
+        jLabel6.setText("Campos");
+
+        jb_addrecord.setText("Agregar");
+
+        javax.swing.GroupLayout jp_addLayout = new javax.swing.GroupLayout(jp_add);
+        jp_add.setLayout(jp_addLayout);
+        jp_addLayout.setHorizontalGroup(
+            jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_addLayout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
+                .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addGap(165, 165, 165))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
+                        .addComponent(jb_addrecord)
+                        .addGap(173, 173, 173))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addGap(18, 18, 18)
+                        .addComponent(cb_fields, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82))))
         );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
+        jp_addLayout.setVerticalGroup(
+            jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_addLayout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(jLabel5)
+                .addGap(53, 53, 53)
+                .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(cb_fields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(56, 56, 56)
+                .addComponent(jb_addrecord)
+                .addContainerGap(103, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Agregar", jp_add);
+
+        javax.swing.GroupLayout jp_modifyLayout = new javax.swing.GroupLayout(jp_modify);
+        jp_modify.setLayout(jp_modifyLayout);
+        jp_modifyLayout.setHorizontalGroup(
+            jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 435, Short.MAX_VALUE)
+        );
+        jp_modifyLayout.setVerticalGroup(
+            jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 341, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Modificar", jp_modify);
+
+        javax.swing.GroupLayout jp_findLayout = new javax.swing.GroupLayout(jp_find);
+        jp_find.setLayout(jp_findLayout);
+        jp_findLayout.setHorizontalGroup(
+            jp_findLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 435, Short.MAX_VALUE)
+        );
+        jp_findLayout.setVerticalGroup(
+            jp_findLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 341, Short.MAX_VALUE)
+        );
+
+        jTabbedPane2.addTab("Buscar", jp_find);
+
+        jt_records.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jt_records);
+
+        jb_deleterecord.setText("Eliminar");
+
+        javax.swing.GroupLayout jp_listLayout = new javax.swing.GroupLayout(jp_list);
+        jp_list.setLayout(jp_listLayout);
+        jp_listLayout.setHorizontalGroup(
+            jp_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_listLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5)
-                .addContainerGap(260, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(jp_listLayout.createSequentialGroup()
+                .addGap(179, 179, 179)
+                .addComponent(jb_deleterecord)
+                .addContainerGap(187, Short.MAX_VALUE))
         );
+        jp_listLayout.setVerticalGroup(
+            jp_listLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jp_listLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jb_deleterecord)
+                .addContainerGap(34, Short.MAX_VALUE))
+        );
+
+        jTabbedPane2.addTab("Listar", jp_list);
 
         javax.swing.GroupLayout jf_recordLayout = new javax.swing.GroupLayout(jf_record.getContentPane());
         jf_record.getContentPane().setLayout(jf_recordLayout);
         jf_recordLayout.setHorizontalGroup(
             jf_recordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2)
         );
         jf_recordLayout.setVerticalGroup(
             jf_recordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jTabbedPane2)
         );
+
+        javax.swing.GroupLayout jp_createindexLayout = new javax.swing.GroupLayout(jp_createindex);
+        jp_createindex.setLayout(jp_createindexLayout);
+        jp_createindexLayout.setHorizontalGroup(
+            jp_createindexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
+        jp_createindexLayout.setVerticalGroup(
+            jp_createindexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 272, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Crear Índices", jp_createindex);
+
+        javax.swing.GroupLayout jp_reindexfilesLayout = new javax.swing.GroupLayout(jp_reindexfiles);
+        jp_reindexfiles.setLayout(jp_reindexfilesLayout);
+        jp_reindexfilesLayout.setHorizontalGroup(
+            jp_reindexfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 395, Short.MAX_VALUE)
+        );
+        jp_reindexfilesLayout.setVerticalGroup(
+            jp_reindexfilesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 272, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Re-Indexar Archivos", jp_reindexfiles);
 
         javax.swing.GroupLayout jf_indexLayout = new javax.swing.GroupLayout(jf_index.getContentPane());
         jf_index.getContentPane().setLayout(jf_indexLayout);
         jf_indexLayout.setHorizontalGroup(
             jf_indexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3)
         );
         jf_indexLayout.setVerticalGroup(
             jf_indexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jf_standarizationLayout = new javax.swing.GroupLayout(jf_standarization.getContentPane());
-        jf_standarization.getContentPane().setLayout(jf_standarizationLayout);
-        jf_standarizationLayout.setHorizontalGroup(
-            jf_standarizationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jf_standarizationLayout.setVerticalGroup(
-            jf_standarizationLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jTabbedPane3)
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -264,62 +422,51 @@ public class Principal extends javax.swing.JFrame {
 
         jm_menu.add(jm_file);
 
-        jm_field.setText("Campos");
-
-        mi_newfield.setText("Crear Campos");
-        mi_newfield.addActionListener(new java.awt.event.ActionListener() {
+        mi_fields.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F, java.awt.event.InputEvent.CTRL_MASK));
+        mi_fields.setText("Campos");
+        mi_fields.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mi_newfieldActionPerformed(evt);
+                mi_fieldsActionPerformed(evt);
             }
         });
-        jm_field.add(mi_newfield);
+        jm_menu.add(mi_fields);
 
-        mi_listfield.setText("Listar Campos");
-        jm_field.add(mi_listfield);
+        mi_records.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_R, java.awt.event.InputEvent.CTRL_MASK));
+        mi_records.setText("Registros");
+        mi_records.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_recordsActionPerformed(evt);
+            }
+        });
+        jm_menu.add(mi_records);
 
-        mi_modifyfield.setText("Modificar Campos");
-        jm_field.add(mi_modifyfield);
-
-        mi_deletefield.setText("Borrar Campos");
-        jm_field.add(mi_deletefield);
-
-        jm_menu.add(jm_field);
-
-        jm_record.setText("Registros");
-
-        mi_newrecord.setText("Introducir Registros");
-        jm_record.add(mi_newrecord);
-
-        mi_modifyrecord.setText("Modificar Registros");
-        jm_record.add(mi_modifyrecord);
-
-        mi_searchrecord.setText("Buscar Registros");
-        jm_record.add(mi_searchrecord);
-
-        mi_deleterecord.setText("Borrar Registros");
-        jm_record.add(mi_deleterecord);
-
-        mi_listrecord.setText("Listar Registros");
-        jm_record.add(mi_listrecord);
-
-        jm_menu.add(jm_record);
-
-        jm_index.setText("Índices");
-
-        mi_newindex.setText("Crear Índices");
-        jm_index.add(mi_newindex);
-
-        mi_reindex.setText("Re-Indexar Archivos");
-        jm_index.add(mi_reindex);
-
-        jm_menu.add(jm_index);
+        mi_index.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_I, java.awt.event.InputEvent.CTRL_MASK));
+        mi_index.setText("Índices");
+        mi_index.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_indexActionPerformed(evt);
+            }
+        });
+        jm_menu.add(mi_index);
 
         jm_standarization.setText("Estandarización");
 
+        mi_exportexcel.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
         mi_exportexcel.setText("Exportar Excel");
+        mi_exportexcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_exportexcelActionPerformed(evt);
+            }
+        });
         jm_standarization.add(mi_exportexcel);
 
+        mi_exportxml.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Y, java.awt.event.InputEvent.CTRL_MASK));
         mi_exportxml.setText("Exportar XML con Schema");
+        mi_exportxml.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_exportxmlActionPerformed(evt);
+            }
+        });
         jm_standarization.add(mi_exportxml);
 
         jm_menu.add(jm_standarization);
@@ -361,12 +508,34 @@ public class Principal extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_mi_logoutActionPerformed
 
-    private void mi_newfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_newfieldActionPerformed
+    private void mi_fieldsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_fieldsActionPerformed
         jf_field.setVisible(true);
         jf_field.pack();
         jf_field.setLocationRelativeTo(null);
         jf_field.setResizable(false);
-    }//GEN-LAST:event_mi_newfieldActionPerformed
+    }//GEN-LAST:event_mi_fieldsActionPerformed
+
+    private void mi_recordsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_recordsActionPerformed
+        jf_record.setVisible(true);
+        jf_record.pack();
+        jf_record.setLocationRelativeTo(null);
+        jf_record.setResizable(false);
+    }//GEN-LAST:event_mi_recordsActionPerformed
+
+    private void mi_indexActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_indexActionPerformed
+        jf_index.setVisible(true);
+        jf_index.pack();
+        jf_index.setLocationRelativeTo(null);
+        jf_index.setResizable(false);
+    }//GEN-LAST:event_mi_indexActionPerformed
+
+    private void mi_exportexcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_exportexcelActionPerformed
+        JOptionPane.showMessageDialog(this, "¡Exportado exitosamente a Excel!");
+    }//GEN-LAST:event_mi_exportexcelActionPerformed
+
+    private void mi_exportxmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_exportxmlActionPerformed
+        JOptionPane.showMessageDialog(this, "¡XML exportado exitosamente con Schema!");
+    }//GEN-LAST:event_mi_exportxmlActionPerformed
 
     /**
      * @param args the command line arguments
@@ -399,48 +568,55 @@ public class Principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> cb_fields;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JButton jb_addfield;
+    private javax.swing.JButton jb_addrecord;
+    private javax.swing.JButton jb_deletefield;
+    private javax.swing.JButton jb_deleterecord;
+    private javax.swing.JButton jb_modifyfield;
     private javax.swing.JFrame jf_field;
     private javax.swing.JFrame jf_file;
     private javax.swing.JFrame jf_index;
     private javax.swing.JFrame jf_record;
-    private javax.swing.JFrame jf_standarization;
-    private javax.swing.JMenu jm_field;
     private javax.swing.JMenu jm_file;
-    private javax.swing.JMenu jm_index;
     private javax.swing.JMenu jm_menu;
-    private javax.swing.JMenu jm_record;
     private javax.swing.JMenu jm_standarization;
+    private javax.swing.JPanel jp_add;
+    private javax.swing.JPanel jp_createindex;
+    private javax.swing.JPanel jp_file;
+    private javax.swing.JPanel jp_find;
+    private javax.swing.JPanel jp_list;
+    private javax.swing.JPanel jp_modify;
+    private javax.swing.JPanel jp_reindexfiles;
+    private javax.swing.JTable jt_fields;
+    private javax.swing.JTable jt_records;
     private javax.swing.JMenuItem mi_closefile;
-    private javax.swing.JMenuItem mi_deletefield;
-    private javax.swing.JMenuItem mi_deleterecord;
     private javax.swing.JMenuItem mi_exportexcel;
     private javax.swing.JMenuItem mi_exportxml;
-    private javax.swing.JMenuItem mi_listfield;
-    private javax.swing.JMenuItem mi_listrecord;
+    private javax.swing.JMenuItem mi_fields;
+    private javax.swing.JMenuItem mi_index;
     private javax.swing.JMenuItem mi_logout;
-    private javax.swing.JMenuItem mi_modifyfield;
-    private javax.swing.JMenuItem mi_modifyrecord;
-    private javax.swing.JMenuItem mi_newfield;
     private javax.swing.JMenuItem mi_newfile;
-    private javax.swing.JMenuItem mi_newindex;
-    private javax.swing.JMenuItem mi_newrecord;
-    private javax.swing.JMenuItem mi_reindex;
+    private javax.swing.JMenuItem mi_records;
     private javax.swing.JMenuItem mi_savefile;
-    private javax.swing.JMenuItem mi_searchrecord;
+    private javax.swing.JTextField tf_fieldcontent;
+    private javax.swing.JTextField tf_fieldname;
     // End of variables declaration//GEN-END:variables
 }
