@@ -1,5 +1,6 @@
 package first_advance;
 
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -108,6 +109,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel4.setText("Contenido");
 
         jb_addfield.setText("Agregar");
+        jb_addfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_addfieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -537,6 +543,29 @@ public class Principal extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(this, "¡XML exportado exitosamente con Schema!");
     }//GEN-LAST:event_mi_exportxmlActionPerformed
 
+    private void jb_addfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addfieldActionPerformed
+        String name, content;
+        
+        name = tf_fieldname.getText();
+        content = tf_fieldcontent.getText();
+        
+        if (name.equals("") || content.equals("")) {
+            JOptionPane.showMessageDialog(this, "¡Por favor ingrese la información necesaria1!");
+        } else {
+            Field field = new Field(name, content.length(), content);
+            
+            fields.add(field);
+            tf_fieldname.setText("");
+            tf_fieldcontent.setText("");
+        }
+        
+        for (int i = 0; i < fields.size(); i++) {
+            System.out.println(fields.get(i));
+        }
+        
+        JOptionPane.showMessageDialog(this, "¡Campo agregado a la lista exitosamente!");
+    }//GEN-LAST:event_jb_addfieldActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -619,4 +648,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField tf_fieldcontent;
     private javax.swing.JTextField tf_fieldname;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Field> fields = new ArrayList();
+    ArrayList<Record> record = new ArrayList();
 }
