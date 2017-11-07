@@ -3,6 +3,7 @@ package first_advance;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -32,8 +33,6 @@ public class Principal extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jt_fields = new javax.swing.JTable();
-        jb_deletefield = new javax.swing.JButton();
-        jb_modifyfield = new javax.swing.JButton();
         jf_record = new javax.swing.JFrame();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jp_add = new javax.swing.JPanel();
@@ -51,6 +50,9 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jp_createindex = new javax.swing.JPanel();
         jp_reindexfiles = new javax.swing.JPanel();
+        pop_table = new javax.swing.JPopupMenu();
+        delet_t = new javax.swing.JMenuItem();
+        change_t = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -100,6 +102,12 @@ public class Principal extends javax.swing.JFrame {
             jf_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jp_file, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
+
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel2.setText("Campo");
@@ -160,20 +168,25 @@ public class Principal extends javax.swing.JFrame {
 
         jt_fields.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null},
+                {null, null, ""},
+                {null, null, null},
+                {null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Tamaño", "Contenido"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jt_fields.setComponentPopupMenu(pop_table);
         jScrollPane2.setViewportView(jt_fields);
-
-        jb_deletefield.setText("Eliminar");
-
-        jb_modifyfield.setText("Modificar");
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -181,25 +194,15 @@ public class Principal extends javax.swing.JFrame {
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 416, Short.MAX_VALUE)
                 .addContainerGap())
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(99, 99, 99)
-                .addComponent(jb_deletefield)
-                .addGap(75, 75, 75)
-                .addComponent(jb_modifyfield)
-                .addContainerGap(102, Short.MAX_VALUE))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jb_deletefield)
-                    .addComponent(jb_modifyfield))
-                .addGap(0, 34, Short.MAX_VALUE))
+                .addGap(0, 81, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Listar", jPanel7);
@@ -370,6 +373,22 @@ public class Principal extends javax.swing.JFrame {
             jf_indexLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane3)
         );
+
+        delet_t.setText("Eliminar");
+        delet_t.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                delet_tActionPerformed(evt);
+            }
+        });
+        pop_table.add(delet_t);
+
+        change_t.setText("Modificar");
+        change_t.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                change_tActionPerformed(evt);
+            }
+        });
+        pop_table.add(change_t);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -565,6 +584,44 @@ public class Principal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jb_addfieldActionPerformed
 
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+
+        DefaultTableModel modelo = (DefaultTableModel) jt_fields.getModel();
+        int rows = modelo.getRowCount();
+
+        for (int i = rows - 1; i >= 0; i--) {
+            modelo.removeRow(i);
+        }
+
+        for (int i = 0; i < fields.size(); i++) {
+            Object[] newrow = new Object[]{fields.get(i).getName(), fields.get(i).getSize(), fields.get(i).getContent()};
+            modelo.addRow(newrow);
+            jt_fields.setModel(modelo);
+        }
+
+
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void delet_tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delet_tActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_fields.getModel();
+        fields.remove(jt_fields.getSelectedRow());
+        modelo.removeRow(jt_fields.getSelectedRow());
+        
+        
+
+        
+    }//GEN-LAST:event_delet_tActionPerformed
+
+    private void change_tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_tActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_fields.getModel();
+        
+        fields.get(jt_fields.getSelectedRow()).setName((String)modelo.getValueAt(jt_fields.getSelectedRow(),0));
+        fields.get(jt_fields.getSelectedRow()).setContent((String)modelo.getValueAt(jt_fields.getSelectedRow(),2));
+        fields.get(jt_fields.getSelectedRow()).setSize(fields.get(jt_fields.getSelectedRow()).getContent().length());
+        
+        JOptionPane.showMessageDialog(this, "¡Campo modificado exitosamente!");
+    }//GEN-LAST:event_change_tActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -597,6 +654,8 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_fields;
+    private javax.swing.JMenuItem change_t;
+    private javax.swing.JMenuItem delet_t;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -616,9 +675,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JButton jb_addfield;
     private javax.swing.JButton jb_addrecord;
-    private javax.swing.JButton jb_deletefield;
     private javax.swing.JButton jb_deleterecord;
-    private javax.swing.JButton jb_modifyfield;
     private javax.swing.JFrame jf_field;
     private javax.swing.JFrame jf_file;
     private javax.swing.JFrame jf_index;
@@ -644,6 +701,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenuItem mi_newfile;
     private javax.swing.JMenuItem mi_records;
     private javax.swing.JMenuItem mi_savefile;
+    private javax.swing.JPopupMenu pop_table;
     private javax.swing.JTextField tf_fieldcontent;
     private javax.swing.JTextField tf_fieldname;
     // End of variables declaration//GEN-END:variables
