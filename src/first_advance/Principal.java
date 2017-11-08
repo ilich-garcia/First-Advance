@@ -1,16 +1,22 @@
 package first_advance;
 
+import java.io.IOException;
 import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.table.*;
 
 public class Principal extends javax.swing.JFrame {
+
+    FileManager admin;
 
     public Principal() {
         initComponents();
         this.pack();
         setLocationRelativeTo(null);
         this.setExtendedState(MAXIMIZED_BOTH);
+
     }
 
     @SuppressWarnings("unchecked")
@@ -20,6 +26,8 @@ public class Principal extends javax.swing.JFrame {
         jf_file = new javax.swing.JFrame();
         jp_file = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jtext_nameFile = new javax.swing.JTextField();
+        jButton_crear = new javax.swing.JButton();
         jf_field = new javax.swing.JFrame();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel6 = new javax.swing.JPanel();
@@ -74,21 +82,51 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Archivo");
 
+        jtext_nameFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtext_nameFileActionPerformed(evt);
+            }
+        });
+
+        jButton_crear.setText("Crear");
+        jButton_crear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton_crearMouseClicked(evt);
+            }
+        });
+        jButton_crear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_crearActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jp_fileLayout = new javax.swing.GroupLayout(jp_file);
         jp_file.setLayout(jp_fileLayout);
         jp_fileLayout.setHorizontalGroup(
             jp_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_fileLayout.createSequentialGroup()
-                .addGap(153, 153, 153)
-                .addComponent(jLabel1)
-                .addContainerGap(157, Short.MAX_VALUE))
+                .addGroup(jp_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_fileLayout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(jLabel1))
+                    .addGroup(jp_fileLayout.createSequentialGroup()
+                        .addGap(157, 157, 157)
+                        .addComponent(jButton_crear))
+                    .addGroup(jp_fileLayout.createSequentialGroup()
+                        .addGap(97, 97, 97)
+                        .addComponent(jtext_nameFile, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
         jp_fileLayout.setVerticalGroup(
             jp_fileLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_fileLayout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(41, 41, 41)
+                .addComponent(jtext_nameFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButton_crear)
+                .addContainerGap(150, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jf_fileLayout = new javax.swing.GroupLayout(jf_file.getContentPane());
@@ -529,6 +567,25 @@ public class Principal extends javax.swing.JFrame {
 
     private void mi_savefileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_savefileActionPerformed
         JOptionPane.showMessageDialog(this, "Archivo guardado correctamente");
+        try {
+            ArrayList<Record> records =new ArrayList<>();
+            records.add(new Record());
+            records.get(0).getFields().add(new Field("", WIDTH, "Diego"));
+            records.get(0).getFields().add(new Field("", WIDTH, "Mendoza"));
+            records.get(0).getFields().add(new Field("", WIDTH, "17"));
+            records.add(new Record());
+            records.get(1).getFields().add(new Field("", WIDTH, "Wilmer"));
+            records.get(1).getFields().add(new Field("", WIDTH, "Mendoza"));
+            records.get(1).getFields().add(new Field("", WIDTH, "17"));
+            records.add(new Record());
+            records.get(2).getFields().add(new Field("", WIDTH, "Luis"));
+            records.get(2).getFields().add(new Field("", WIDTH, "Turcios"));
+            records.get(2).getFields().add(new Field("", WIDTH, "17"));
+            admin.setRecords(records);
+            admin.saveFile();
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mi_savefileActionPerformed
 
     private void mi_logoutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_logoutActionPerformed
@@ -604,7 +661,7 @@ public class Principal extends javax.swing.JFrame {
         if (jt_fields.getSelectedRow() >= 0) {
             fields.remove(jt_fields.getSelectedRow());
             model.removeRow(jt_fields.getSelectedRow());
-            
+
             JOptionPane.showMessageDialog(this, "¡Campo eliminado exitosamente!");
         } else {
             JOptionPane.showMessageDialog(this, "¡Seleccione un campo primero!");
@@ -623,7 +680,7 @@ public class Principal extends javax.swing.JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "¡Seleccione un campo primero!");
         }
-        
+
         for (int i = 0; i < fields.size(); i++) {
             System.out.println(fields.get(i));
         }
@@ -631,17 +688,53 @@ public class Principal extends javax.swing.JFrame {
 
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
         DefaultComboBoxModel model = new DefaultComboBoxModel();
-        
+
         cb_fields.setModel(model);
-        
+
         model = (DefaultComboBoxModel) cb_fields.getModel();
-        
+
         for (int i = 0; i < fields.size(); i++) {
             model.addElement(fields.get(i));
         }
-        
+
         cb_fields.setModel(model);
     }//GEN-LAST:event_jTabbedPane2MouseClicked
+
+    private void jtext_nameFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtext_nameFileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtext_nameFileActionPerformed
+
+    private void jButton_crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_crearActionPerformed
+    }//GEN-LAST:event_jButton_crearActionPerformed
+
+    private void jButton_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton_crearMouseClicked
+        // TODO add your handling code here:
+        System.out.println("Entro");
+        try {
+            if (jtext_nameFile.getText().equals("")) {
+                ArrayList<String> campos = new ArrayList<>();
+                campos.add("Nombre");
+                campos.add("Apellido");
+                campos.add("Edad");
+                admin = new FileManager("File.txt");
+                admin.crearArchivo(campos);
+                System.out.println("Lo creo");
+
+            } else {
+                ArrayList<String> campos = new ArrayList<>();
+                campos.add("Nombre");
+                campos.add("Apellido");
+                campos.add("Edad");
+                admin = new FileManager(jtext_nameFile.getText() + ".txt");
+                admin.crearArchivo(campos);
+                System.out.println("Lo creo");
+
+            }
+        } catch (Exception e) {
+
+        }
+
+    }//GEN-LAST:event_jButton_crearMouseClicked
 
     /**
      * @param args the command line arguments
@@ -675,6 +768,7 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_fields;
+    private javax.swing.JButton jButton_crear;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -711,6 +805,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_reindexfiles;
     private javax.swing.JTable jt_fields;
     private javax.swing.JTable jt_records;
+    private javax.swing.JTextField jtext_nameFile;
     private javax.swing.JMenuItem mi_closefile;
     private javax.swing.JMenuItem mi_deletefield;
     private javax.swing.JMenuItem mi_exportexcel;
