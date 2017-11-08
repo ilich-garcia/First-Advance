@@ -1,9 +1,8 @@
 package first_advance;
 
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
-import javax.swing.UIManager;
-import javax.swing.table.DefaultTableModel;
+import java.util.*;
+import javax.swing.*;
+import javax.swing.table.*;
 
 public class Principal extends javax.swing.JFrame {
 
@@ -51,8 +50,8 @@ public class Principal extends javax.swing.JFrame {
         jp_createindex = new javax.swing.JPanel();
         jp_reindexfiles = new javax.swing.JPanel();
         pop_table = new javax.swing.JPopupMenu();
-        delet_t = new javax.swing.JMenuItem();
-        change_t = new javax.swing.JMenuItem();
+        mi_deletefield = new javax.swing.JMenuItem();
+        mi_modifyfield = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -168,10 +167,7 @@ public class Principal extends javax.swing.JFrame {
 
         jt_fields.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, ""},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Nombre", "Tamaño", "Contenido"
@@ -199,13 +195,13 @@ public class Principal extends javax.swing.JFrame {
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 236, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 81, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(37, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34))
         );
 
-        jTabbedPane1.addTab("Listar", jPanel7);
+        jTabbedPane1.addTab("Listar/Eliminar/Modificar", jPanel7);
 
         javax.swing.GroupLayout jf_fieldLayout = new javax.swing.GroupLayout(jf_field.getContentPane());
         jf_field.getContentPane().setLayout(jf_fieldLayout);
@@ -217,6 +213,12 @@ public class Principal extends javax.swing.JFrame {
             jf_fieldLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jTabbedPane1)
         );
+
+        jTabbedPane2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane2MouseClicked(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Agregar");
@@ -230,19 +232,20 @@ public class Principal extends javax.swing.JFrame {
         jp_addLayout.setHorizontalGroup(
             jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_addLayout.createSequentialGroup()
-                .addContainerGap(98, Short.MAX_VALUE)
+                .addContainerGap(176, Short.MAX_VALUE)
                 .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
                         .addComponent(jLabel5)
                         .addGap(165, 165, 165))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
                         .addComponent(jb_addrecord)
-                        .addGap(173, 173, 173))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addGap(18, 18, 18)
-                        .addComponent(cb_fields, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82))))
+                        .addGap(173, 173, 173))))
+            .addGroup(jp_addLayout.createSequentialGroup()
+                .addGap(78, 78, 78)
+                .addComponent(jLabel6)
+                .addGap(18, 18, 18)
+                .addComponent(cb_fields, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jp_addLayout.setVerticalGroup(
             jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -374,21 +377,21 @@ public class Principal extends javax.swing.JFrame {
             .addComponent(jTabbedPane3)
         );
 
-        delet_t.setText("Eliminar");
-        delet_t.addActionListener(new java.awt.event.ActionListener() {
+        mi_deletefield.setText("Eliminar");
+        mi_deletefield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delet_tActionPerformed(evt);
+                mi_deletefieldActionPerformed(evt);
             }
         });
-        pop_table.add(delet_t);
+        pop_table.add(mi_deletefield);
 
-        change_t.setText("Modificar");
-        change_t.addActionListener(new java.awt.event.ActionListener() {
+        mi_modifyfield.setText("Modificar");
+        mi_modifyfield.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                change_tActionPerformed(evt);
+                mi_modifyfieldActionPerformed(evt);
             }
         });
-        pop_table.add(change_t);
+        pop_table.add(mi_modifyfield);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -578,49 +581,67 @@ public class Principal extends javax.swing.JFrame {
             tf_fieldname.setText("");
             tf_fieldcontent.setText("");
         }
-
-        for (int i = 0; i < fields.size(); i++) {
-            System.out.println(fields.get(i));
-        }
     }//GEN-LAST:event_jb_addfieldActionPerformed
 
     private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
-
-        DefaultTableModel modelo = (DefaultTableModel) jt_fields.getModel();
-        int rows = modelo.getRowCount();
+        DefaultTableModel model = (DefaultTableModel) jt_fields.getModel();
+        int rows = model.getRowCount();
 
         for (int i = rows - 1; i >= 0; i--) {
-            modelo.removeRow(i);
+            model.removeRow(i);
         }
 
         for (int i = 0; i < fields.size(); i++) {
             Object[] newrow = new Object[]{fields.get(i).getName(), fields.get(i).getSize(), fields.get(i).getContent()};
-            modelo.addRow(newrow);
-            jt_fields.setModel(modelo);
+            model.addRow(newrow);
+            jt_fields.setModel(model);
         }
-
-
     }//GEN-LAST:event_jTabbedPane1MouseClicked
 
-    private void delet_tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delet_tActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) jt_fields.getModel();
-        fields.remove(jt_fields.getSelectedRow());
-        modelo.removeRow(jt_fields.getSelectedRow());
-        
-        
+    private void mi_deletefieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_deletefieldActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jt_fields.getModel();
 
-        
-    }//GEN-LAST:event_delet_tActionPerformed
+        if (jt_fields.getSelectedRow() >= 0) {
+            fields.remove(jt_fields.getSelectedRow());
+            model.removeRow(jt_fields.getSelectedRow());
+            
+            JOptionPane.showMessageDialog(this, "¡Campo eliminado exitosamente!");
+        } else {
+            JOptionPane.showMessageDialog(this, "¡Seleccione un campo primero!");
+        }
+    }//GEN-LAST:event_mi_deletefieldActionPerformed
 
-    private void change_tActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_change_tActionPerformed
-        DefaultTableModel modelo = (DefaultTableModel) jt_fields.getModel();
+    private void mi_modifyfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_modifyfieldActionPerformed
+        DefaultTableModel model = (DefaultTableModel) jt_fields.getModel();
+
+        if (jt_fields.getSelectedRow() >= 0) {
+            fields.get(jt_fields.getSelectedRow()).setName((String) model.getValueAt(jt_fields.getSelectedRow(), 0));
+            fields.get(jt_fields.getSelectedRow()).setContent((String) model.getValueAt(jt_fields.getSelectedRow(), 2));
+            fields.get(jt_fields.getSelectedRow()).setSize(fields.get(jt_fields.getSelectedRow()).getContent().length());
+
+            JOptionPane.showMessageDialog(this, "¡Campo modificado exitosamente!");
+        } else {
+            JOptionPane.showMessageDialog(this, "¡Seleccione un campo primero!");
+        }
         
-        fields.get(jt_fields.getSelectedRow()).setName((String)modelo.getValueAt(jt_fields.getSelectedRow(),0));
-        fields.get(jt_fields.getSelectedRow()).setContent((String)modelo.getValueAt(jt_fields.getSelectedRow(),2));
-        fields.get(jt_fields.getSelectedRow()).setSize(fields.get(jt_fields.getSelectedRow()).getContent().length());
+        for (int i = 0; i < fields.size(); i++) {
+            System.out.println(fields.get(i));
+        }
+    }//GEN-LAST:event_mi_modifyfieldActionPerformed
+
+    private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
+        DefaultComboBoxModel model = new DefaultComboBoxModel();
         
-        JOptionPane.showMessageDialog(this, "¡Campo modificado exitosamente!");
-    }//GEN-LAST:event_change_tActionPerformed
+        cb_fields.setModel(model);
+        
+        model = (DefaultComboBoxModel) cb_fields.getModel();
+        
+        for (int i = 0; i < fields.size(); i++) {
+            model.addElement(fields.get(i));
+        }
+        
+        cb_fields.setModel(model);
+    }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     /**
      * @param args the command line arguments
@@ -654,8 +675,6 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_fields;
-    private javax.swing.JMenuItem change_t;
-    private javax.swing.JMenuItem delet_t;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -693,11 +712,13 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTable jt_fields;
     private javax.swing.JTable jt_records;
     private javax.swing.JMenuItem mi_closefile;
+    private javax.swing.JMenuItem mi_deletefield;
     private javax.swing.JMenuItem mi_exportexcel;
     private javax.swing.JMenuItem mi_exportxml;
     private javax.swing.JMenuItem mi_fields;
     private javax.swing.JMenuItem mi_index;
     private javax.swing.JMenuItem mi_logout;
+    private javax.swing.JMenuItem mi_modifyfield;
     private javax.swing.JMenuItem mi_newfile;
     private javax.swing.JMenuItem mi_records;
     private javax.swing.JMenuItem mi_savefile;
