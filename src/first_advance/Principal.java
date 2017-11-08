@@ -1,5 +1,7 @@
 package first_advance;
 
+import eddiiexportar.ExcelExport;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 import java.util.logging.Level;
@@ -476,6 +478,11 @@ public class Principal extends javax.swing.JFrame {
         jm_file.add(mi_savefile);
 
         mi_closefile.setText("Cerrar Archivo");
+        mi_closefile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mi_closefileActionPerformed(evt);
+            }
+        });
         jm_file.add(mi_closefile);
 
         mi_logout.setText("Salir");
@@ -616,6 +623,11 @@ public class Principal extends javax.swing.JFrame {
 
     private void mi_exportexcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_exportexcelActionPerformed
         JOptionPane.showMessageDialog(this, "¡Exportado exitosamente a Excel!");
+        try {
+            admin.exportFile(admin.getFile(), "ExcelExport");
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_mi_exportexcelActionPerformed
 
     private void mi_exportxmlActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_exportxmlActionPerformed
@@ -735,6 +747,12 @@ public class Principal extends javax.swing.JFrame {
         }
 
     }//GEN-LAST:event_jButton_crearMouseClicked
+
+    private void mi_closefileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_closefileActionPerformed
+        // TODO add your handling code here:
+        System.out.println("Archivo Cerrado");
+        
+    }//GEN-LAST:event_mi_closefileActionPerformed
 
     /**
      * @param args the command line arguments
