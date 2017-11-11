@@ -3,10 +3,24 @@ package first_advance;
 import java.util.ArrayList;
 
 public class Record {
+    String tregistro;
 
+    @Override
+    public String toString() {
+        return tregistro;
+    }
+
+    public String getTregistro() {
+        return tregistro;
+    }
+
+    public void setTregistro(String tregistro) {
+        this.tregistro = tregistro;
+    }
     ArrayList<Field> fields = new ArrayList();
 
-    public Record() {
+    public Record(String registro) {
+        tregistro=registro;
     }
 
     public ArrayList<Field> getFields() {
@@ -17,7 +31,7 @@ public class Record {
         this.fields = fields;
     }
 
-    public void setField(Field field) {
+    public void AddField(Field field) {
         fields.add(field);
     }
 
@@ -31,3 +45,4 @@ public class Record {
         fields.remove(position);
     }
 }
+

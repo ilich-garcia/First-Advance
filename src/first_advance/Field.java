@@ -44,6 +44,6 @@ public class Field {
 
     @Override
     public String toString() {
-        return "Nombre del Campo: " + name + ". Tamaño: " + size + ". Contenido: " + content;
+        return  name ;
     }
 }

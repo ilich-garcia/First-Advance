@@ -47,9 +47,25 @@ public class Principal extends javax.swing.JFrame {
         jp_add = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        cb_fields = new javax.swing.JComboBox<>();
+        cb_fields = new javax.swing.JComboBox<String>();
         jb_addrecord = new javax.swing.JButton();
+        jt_tiporegistro = new javax.swing.JTextField();
+        cb_registros = new javax.swing.JComboBox();
+        jb_crearregistro = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
         jp_modify = new javax.swing.JPanel();
+        cb_mregistros = new javax.swing.JComboBox();
+        cb_mcampos = new javax.swing.JComboBox();
+        jt_mnombre = new javax.swing.JTextField();
+        jt_mcontenido = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jt_mtiporegistro = new javax.swing.JTextField();
         jp_find = new javax.swing.JPanel();
         jp_list = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -62,6 +78,7 @@ public class Principal extends javax.swing.JFrame {
         pop_table = new javax.swing.JPopupMenu();
         mi_deletefield = new javax.swing.JMenuItem();
         mi_modifyfield = new javax.swing.JMenuItem();
+        jTextField1 = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -266,52 +283,195 @@ public class Principal extends javax.swing.JFrame {
         jLabel6.setText("Campos");
 
         jb_addrecord.setText("Agregar");
+        jb_addrecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_addrecordActionPerformed(evt);
+            }
+        });
+
+        jt_tiporegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_tiporegistroActionPerformed(evt);
+            }
+        });
+
+        jb_crearregistro.setText("Crear Registro");
+        jb_crearregistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_crearregistroActionPerformed(evt);
+            }
+        });
+
+        jLabel7.setText("Registros");
+
+        jLabel8.setText("Tipo Registros");
 
         javax.swing.GroupLayout jp_addLayout = new javax.swing.GroupLayout(jp_add);
         jp_add.setLayout(jp_addLayout);
         jp_addLayout.setHorizontalGroup(
             jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addGap(165, 165, 165))
             .addGroup(jp_addLayout.createSequentialGroup()
-                .addContainerGap(176, Short.MAX_VALUE)
+                .addGap(68, 68, 68)
                 .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addGap(165, 165, 165))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jp_addLayout.createSequentialGroup()
-                        .addComponent(jb_addrecord)
-                        .addGap(173, 173, 173))))
-            .addGroup(jp_addLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel6)
-                .addGap(18, 18, 18)
-                .addComponent(cb_fields, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jp_addLayout.createSequentialGroup()
+                        .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jp_addLayout.createSequentialGroup()
+                                .addComponent(jb_crearregistro)
+                                .addGap(62, 62, 62)
+                                .addComponent(jb_addrecord))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jp_addLayout.createSequentialGroup()
+                                .addComponent(jLabel6)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(cb_fields, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(40, 120, Short.MAX_VALUE))
+                    .addGroup(jp_addLayout.createSequentialGroup()
+                        .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_addLayout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cb_registros, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jp_addLayout.createSequentialGroup()
+                                .addComponent(jLabel8)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jt_tiporegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jp_addLayout.setVerticalGroup(
             jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jp_addLayout.createSequentialGroup()
                 .addGap(57, 57, 57)
                 .addComponent(jLabel5)
-                .addGap(53, 53, 53)
+                .addGap(26, 26, 26)
+                .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jt_tiporegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGap(18, 18, 18)
+                .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(cb_registros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(cb_fields, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
-                .addComponent(jb_addrecord)
-                .addContainerGap(103, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addGroup(jp_addLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jb_addrecord)
+                    .addComponent(jb_crearregistro))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Agregar", jp_add);
+
+        cb_mregistros.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cb_mregistros.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_mregistrosActionPerformed(evt);
+            }
+        });
+
+        cb_mcampos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_mcamposActionPerformed(evt);
+            }
+        });
+
+        jt_mnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_mnombreActionPerformed(evt);
+            }
+        });
+
+        jt_mcontenido.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_mcontenidoActionPerformed(evt);
+            }
+        });
+
+        jLabel9.setText("Nombre");
+
+        jLabel10.setText("Contenido");
+
+        jButton1.setText("Guardar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("Registros");
+
+        jLabel12.setText("Campos");
+
+        jLabel13.setText("Modificar tipo de registro");
+
+        jt_mtiporegistro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jt_mtiporegistroActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_modifyLayout = new javax.swing.GroupLayout(jp_modify);
         jp_modify.setLayout(jp_modifyLayout);
         jp_modifyLayout.setHorizontalGroup(
             jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 435, Short.MAX_VALUE)
+            .addGroup(jp_modifyLayout.createSequentialGroup()
+                .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jp_modifyLayout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(jButton1))
+                    .addGroup(jp_modifyLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jp_modifyLayout.createSequentialGroup()
+                                .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel9)
+                                        .addComponent(jLabel10))
+                                    .addComponent(jLabel11))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(cb_mregistros, javax.swing.GroupLayout.Alignment.LEADING, 0, 97, Short.MAX_VALUE)
+                                    .addComponent(cb_mcampos, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jt_mnombre, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jt_mcontenido, javax.swing.GroupLayout.Alignment.LEADING)))
+                            .addComponent(jLabel12))))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jt_mtiporegistro, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jp_modifyLayout.setVerticalGroup(
             jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 341, Short.MAX_VALUE)
+            .addGroup(jp_modifyLayout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jp_modifyLayout.createSequentialGroup()
+                        .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jp_modifyLayout.createSequentialGroup()
+                                .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jt_mnombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jt_mtiporegistro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jt_mcontenido, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))
+                                .addGap(11, 11, 11)
+                                .addComponent(cb_mregistros, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel11))
+                        .addGap(38, 38, 38))
+                    .addGroup(jp_modifyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(cb_mcampos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(68, 68, 68)
+                .addComponent(jButton1)
+                .addContainerGap(77, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("Modificar", jp_modify);
@@ -331,18 +491,20 @@ public class Principal extends javax.swing.JFrame {
 
         jt_records.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Nombre", "Numero de campos"
             }
         ));
         jScrollPane1.setViewportView(jt_records);
 
         jb_deleterecord.setText("Eliminar");
+        jb_deleterecord.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jb_deleterecordActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jp_listLayout = new javax.swing.GroupLayout(jp_list);
         jp_list.setLayout(jp_listLayout);
@@ -432,6 +594,8 @@ public class Principal extends javax.swing.JFrame {
             }
         });
         pop_table.add(mi_modifyfield);
+
+        jTextField1.setText("jTextField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -575,7 +739,7 @@ public class Principal extends javax.swing.JFrame {
     private void mi_savefileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_savefileActionPerformed
         JOptionPane.showMessageDialog(this, "Archivo guardado correctamente");
         try {
-            ArrayList<Record> records =new ArrayList<>();
+            ArrayList<Record> records = new ArrayList<>();
             records.add(new Record());
             records.get(0).getFields().add(new Field("", WIDTH, "Diego"));
             records.get(0).getFields().add(new Field("", WIDTH, "Mendoza"));
@@ -649,6 +813,12 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "¡Campo agregado a la lista exitosamente!");
             tf_fieldname.setText("");
             tf_fieldcontent.setText("");
+            DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_fields.getModel();
+            modelo.addElement(field);
+        }
+
+        for (int i = 0; i < fields.size(); i++) {
+            System.out.println(fields.get(i));
         }
     }//GEN-LAST:event_jb_addfieldActionPerformed
 
@@ -699,17 +869,18 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_mi_modifyfieldActionPerformed
 
     private void jTabbedPane2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane2MouseClicked
-        DefaultComboBoxModel model = new DefaultComboBoxModel();
+        DefaultTableModel modelo = (DefaultTableModel) jt_records.getModel();
+        int rows = modelo.getRowCount();
 
-        cb_fields.setModel(model);
-
-        model = (DefaultComboBoxModel) cb_fields.getModel();
-
-        for (int i = 0; i < fields.size(); i++) {
-            model.addElement(fields.get(i));
+        for (int i = rows - 1; i >= 0; i--) {
+            modelo.removeRow(i);
         }
 
-        cb_fields.setModel(model);
+        for (int i = 0; i < record.size(); i++) {
+            Object[] newrow = new Object[]{record.get(i).getTregistro(), record.get(i).getFields().size()};
+            modelo.addRow(newrow);
+
+        }
     }//GEN-LAST:event_jTabbedPane2MouseClicked
 
     private void jtext_nameFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtext_nameFileActionPerformed
@@ -751,8 +922,74 @@ public class Principal extends javax.swing.JFrame {
     private void mi_closefileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mi_closefileActionPerformed
         // TODO add your handling code here:
         System.out.println("Archivo Cerrado");
-        
+
     }//GEN-LAST:event_mi_closefileActionPerformed
+
+    private void jb_crearregistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_crearregistroActionPerformed
+        Record registro = new Record(jt_tiporegistro.getText());
+        record.add(registro);
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_registros.getModel();
+        modelo.addElement(registro);
+        JOptionPane.showMessageDialog(this, "¡Registro Creado exitosamente!");
+        jt_tiporegistro.setText("");
+        DefaultComboBoxModel modelo1 = (DefaultComboBoxModel) cb_mregistros.getModel();
+        modelo1.addElement(registro);
+
+
+    }//GEN-LAST:event_jb_crearregistroActionPerformed
+
+    private void jt_tiporegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_tiporegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_tiporegistroActionPerformed
+
+    private void jb_addrecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_addrecordActionPerformed
+        record.get(cb_registros.getSelectedIndex()).AddField(fields.get(cb_fields.getSelectedIndex()));
+        JOptionPane.showMessageDialog(this, "¡Campo agregado exitosamente al registro!");
+    }//GEN-LAST:event_jb_addrecordActionPerformed
+
+    private void jb_deleterecordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jb_deleterecordActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel) jt_records.getModel();
+        record.remove(jt_records.getSelectedRow());
+        modelo.removeRow(jt_records.getSelectedRow());
+    }//GEN-LAST:event_jb_deleterecordActionPerformed
+
+    private void cb_mcamposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_mcamposActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_mcamposActionPerformed
+
+    private void jt_mnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_mnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_mnombreActionPerformed
+
+    private void jt_mcontenidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_mcontenidoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_mcontenidoActionPerformed
+
+    private void cb_mregistrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_mregistrosActionPerformed
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_mcampos.getModel();
+        modelo.removeAllElements();
+        for (int i = 0; i < record.get(cb_mregistros.getSelectedIndex()).getFields().size(); i++) {
+
+            modelo.addElement(record.get(cb_mregistros.getSelectedIndex()).getFields().get(i));
+        }
+    }//GEN-LAST:event_cb_mregistrosActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        String content = jt_mcontenido.getText();
+        String name = jt_mnombre.getText();
+        if(jt_mcontenido.getText().isEmpty()==false && jt_mnombre.getText().isEmpty()==false){
+            record.get(cb_mregistros.getSelectedIndex()).getFields().get(cb_mcampos.getSelectedIndex()).ModificarCampo(name, content.length(), content);
+            
+        }
+        JOptionPane.showMessageDialog(this, "¡Cambio Guardado exitosamente!");
+        if (jt_mtiporegistro.getText().isEmpty()==false) {
+            record.get(cb_mregistros.getSelectedIndex()).setTregistro(jt_mtiporegistro.getText());
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jt_mtiporegistroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jt_mtiporegistroActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jt_mtiporegistroActionPerformed
 
     /**
      * @param args the command line arguments
@@ -786,13 +1023,24 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cb_fields;
+    private javax.swing.JComboBox cb_mcampos;
+    private javax.swing.JComboBox cb_mregistros;
+    private javax.swing.JComboBox cb_registros;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton_crear;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JPanel jPanel1;
@@ -804,8 +1052,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton jb_addfield;
     private javax.swing.JButton jb_addrecord;
+    private javax.swing.JButton jb_crearregistro;
     private javax.swing.JButton jb_deleterecord;
     private javax.swing.JFrame jf_field;
     private javax.swing.JFrame jf_file;
@@ -822,7 +1072,11 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JPanel jp_modify;
     private javax.swing.JPanel jp_reindexfiles;
     private javax.swing.JTable jt_fields;
+    private javax.swing.JTextField jt_mcontenido;
+    private javax.swing.JTextField jt_mnombre;
+    private javax.swing.JTextField jt_mtiporegistro;
     private javax.swing.JTable jt_records;
+    private javax.swing.JTextField jt_tiporegistro;
     private javax.swing.JTextField jtext_nameFile;
     private javax.swing.JMenuItem mi_closefile;
     private javax.swing.JMenuItem mi_deletefield;
